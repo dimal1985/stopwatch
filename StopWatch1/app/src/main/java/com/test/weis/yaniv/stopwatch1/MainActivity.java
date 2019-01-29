@@ -86,13 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 lapsList.add(timeUntilNow);
             }
 
-            private long sumPreviousLaps() {
-                long sum = 0L;
-                for (long lap : lapsList) {
-                    sum += lap;
-                }
-                return sum;
-            }
         });
     }
 
