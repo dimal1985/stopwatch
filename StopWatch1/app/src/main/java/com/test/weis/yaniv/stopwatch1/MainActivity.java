@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     Button start, pause, reset, lap;
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L;
     Handler handler;
-    int Seconds, Minutes, MilliSeconds;
     List<Long> lapsList = new CopyOnWriteArrayList<>();
 
     /**
@@ -71,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 StartTime = 0L;
                 TimeBuff = 0L;
                 UpdateTime = 0L;
-                Seconds = 0;
-                Minutes = 0;
-                MilliSeconds = 0;
 
                 lapsList.clear();
 
@@ -87,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 long timeUntilNow = (SystemClock.uptimeMillis() - StartTime) + TimeBuff;
-//                long lapTime = timeUntilNow - sumPreviousLaps();
                 lapsList.add(timeUntilNow);
             }
 
@@ -139,14 +134,15 @@ public class MainActivity extends AppCompatActivity {
      * in format: "MM:SS:mmm"
      */
     private String getStringTime(long timePeriodMillis) {
-        Seconds = (int) (timePeriodMillis / 1000);
-        Minutes = Seconds / 60;
-        Seconds = Seconds % 60;
-        MilliSeconds = (int) (timePeriodMillis % 1000);
+        int seconds, minutes, milliSeconds;
+        seconds = (int) (timePeriodMillis / 1000);
+        minutes = seconds / 60;
+        seconds = seconds % 60;
+        milliSeconds = (int) (timePeriodMillis % 1000);
 
-        return "" + Minutes + ":"
-                + String.format("%02d", Seconds) + ":"
-                + String.format("%03d", MilliSeconds);
+        return "" + minutes + ":"
+                + String.format("%02d", seconds) + ":"
+                + String.format("%03d", milliSeconds);
     }
 
 }
