@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView timer, lapsListOutput;
     Button start, pause, reset, lap;
-    long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L;
+    long millisecondTime, startTime, timeBuff, updateTime = 0L;
     Handler handler;
     List<Long> lapsList = new CopyOnWriteArrayList<>();
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                StartTime = SystemClock.uptimeMillis();
+                startTime = SystemClock.uptimeMillis();
                 handler.postDelayed(runnable, 0);
 
                 reset.setEnabled(false);
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                TimeBuff += MillisecondTime;
+                timeBuff += millisecondTime;
 
                 handler.removeCallbacks(runnable);
 
@@ -66,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                MillisecondTime = 0L;
-                StartTime = 0L;
-                TimeBuff = 0L;
-                UpdateTime = 0L;
+                millisecondTime = 0L;
+                startTime = 0L;
+                timeBuff = 0L;
+                updateTime = 0L;
 
                 lapsList.clear();
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         lap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long timeUntilNow = (SystemClock.uptimeMillis() - StartTime) + TimeBuff;
+                long timeUntilNow = (SystemClock.uptimeMillis() - startTime) + timeBuff;
                 lapsList.add(timeUntilNow);
             }
 
@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
          */
         public void run() {
             // **** THIS IS THE REPEATED LOGIC *********
-            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
-            UpdateTime = TimeBuff + MillisecondTime;
-            timer.setText(getStringTime(UpdateTime));
+            millisecondTime = SystemClock.uptimeMillis() - startTime;
+            updateTime = timeBuff + millisecondTime;
+            timer.setText(getStringTime(updateTime));
             printLaps();
             // **** UP UNTILL HERE *******
 
