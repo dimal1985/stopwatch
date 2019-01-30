@@ -14,12 +14,14 @@ public class StopWatchInternal {
     TextView timer, lapsListOutput;
 
     List<Long> lapsList = new CopyOnWriteArrayList<>();
+
     long millisecondTime, startTime, timeBuff, updateTime = 0L;
+
     Handler handler;
-    Runnable runLoop;
+
+    Utils utils = Utils.getInstance();
 
     public StopWatchInternal(Handler handler,
-                             Runnable runLoop,
                              Button start,
                              Button pause,
                              Button reset,
@@ -27,7 +29,6 @@ public class StopWatchInternal {
                              TextView timer,
                              TextView lapsListOutput) {
         this.handler = handler;
-        this.runLoop = runLoop;
         this.start = start;
         this.pause = pause;
         this.reset = reset;
@@ -45,7 +46,7 @@ public class StopWatchInternal {
             public void onClick(View view) {
 
                 startTime = SystemClock.uptimeMillis();
-                handler.postDelayed(runLoop, 0);
+                handler.postDelayed(runnable, 0);
 
                 reset.setEnabled(false);
 
@@ -58,7 +59,7 @@ public class StopWatchInternal {
 
                 timeBuff += millisecondTime;
 
-                handler.removeCallbacks(runLoop);
+                handler.removeCallbacks(runnable);
 
                 reset.setEnabled(true);
 
@@ -91,4 +92,23 @@ public class StopWatchInternal {
 
         });
     }
+
+    private Runnable runnable = new Runnable() {
+
+        /**
+         * this run() method is executed in loops over and over again, since start butrton pressed, until pause buitton pressed
+         */
+        public void run() {
+            // **** THIS IS THE REPEATED LOGIC *********
+            millisecondTime = SystemClock.uptimeMillis() - startTime;
+            updateTime = timeBuff + millisecondTime;
+            timer.setText(utils.getStringTime(updateTime));
+            utils.printLaps(lapsList, lapsListOutput);
+            // **** UP UNTILL HERE *******
+
+            //this line is responsible to rerun the run() method right after it finishes
+            handler.postDelayed(this, 0);
+        }
+
+    };
 }
