@@ -61,7 +61,7 @@ tools:context=".MainActivity">
             android:text="Reset" />
 
         <Button
-            android:id="@+id/btbutton3"
+            android:id="@+id/btlap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -72,6 +72,18 @@ tools:context=".MainActivity">
             android:background="#ffffff"
             android:text="Lap" />
 
+        <!--<Button-->
+            <!--android:id="@+id/addNewWatchButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentRight="@+id/btStart"-->
+            <!--android:layout_marginTop="379dp"-->
+            <!--android:layout_marginEnd="164dp"-->
+            <!--android:background="#ffffff"-->
+            <!--android:text="+" />-->
+
         <TextView
             android:id="@+id/btlist"
             android:layout_width="wrap_content"
@@ -79,6 +91,75 @@ tools:context=".MainActivity">
             android:layout_marginEnd="158dp"
             android:layout_marginRight="158dp"
             android:layout_marginBottom="72dp"
+            android:text="TextView"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvTimer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="420dp"
+            android:paddingBottom="50dp"
+            android:text="00:00:00"
+            android:textColor="#ffffff"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btStart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTimer2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="41dp"
+            android:background="#ffffff"
+            android:text="Start2" />
+
+        <Button
+            android:id="@+id/btPause2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btStart2"
+            android:layout_alignBottom="@+id/btStart2"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff"
+            android:text="Pause2" />
+
+        <Button
+            android:id="@+id/btReset2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btPause2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="#ffffff"
+            android:text="Reset2" />
+
+        <Button
+            android:id="@+id/btlap2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="@+id/btStart2"
+            android:layout_marginTop="360dp"
+            android:layout_marginEnd="146dp"
+            android:background="#ffffff"
+            android:text="Lap2" />
+
+        <TextView
+            android:id="@+id/btlist2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTimer2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="-70dp"
             android:text="TextView"
             android:textColor="#ffffff"
             android:textStyle="bold"

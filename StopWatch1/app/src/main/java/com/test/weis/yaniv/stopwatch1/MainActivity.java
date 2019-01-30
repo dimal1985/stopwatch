@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView timerTextView, lapsListTextView;
-    Button start, pause, reset, lap;
-
     Handler handler;
 
 
@@ -24,16 +21,40 @@ public class MainActivity extends AppCompatActivity {
 
         handler = new Handler();
 
-        timerTextView = findViewById(R.id.tvTimer);
-        lapsListTextView = findViewById(R.id.btlist);
+      // CREATING THE FIRST WATCH //////////////////////////
+        createNewWatchBasedOn(R.id.tvTimer,
+                R.id.btlist,
+                R.id.btStart,
+                R.id.btPause,
+                R.id.btReset,
+                R.id.btlap);
 
-        //buttons on the screen
-        start = findViewById(R.id.btStart);
-        pause = findViewById(R.id.btPause);
-        reset = findViewById(R.id.btReset);
-        lap = findViewById(R.id.btbutton3);
 
-        createNewStopWatch(timerTextView, lapsListTextView, start, pause, reset, lap);
+        // CREATING THE SECONF WATCH ///////////////////////////
+
+        createNewWatchBasedOn(R.id.tvTimer2,
+                R.id.btlist2,
+                R.id.btStart2,
+                R.id.btPause2,
+                R.id.btReset2,
+                R.id.btlap2);
+
+    }
+
+    private void createNewWatchBasedOn(int timerTextViewId,
+                                       int lapsListTextViewId,
+                                       int startButtonId,
+                                       int pauseButtonId,
+                                       int resetButtonId,
+                                       int lapButtonId) {
+        TextView timerTextView = findViewById(timerTextViewId);
+        TextView lapsListTextView = findViewById(lapsListTextViewId);
+        Button startButton = findViewById(startButtonId);
+        Button pauseButton = findViewById(pauseButtonId);
+        Button resetButton = findViewById(resetButtonId);
+        Button lapButton = findViewById(lapButtonId);
+
+        createNewStopWatch(timerTextView, lapsListTextView, startButton, pauseButton, resetButton, lapButton);
     }
 
     private void createNewStopWatch(TextView timerTextView, TextView lapsListTextView,
