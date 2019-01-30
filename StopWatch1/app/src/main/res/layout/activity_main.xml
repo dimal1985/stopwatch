@@ -61,6 +61,19 @@ tools:context=".MainActivity">
             android:text="Reset" />
 
         <Button
+            android:id="@+id/exportToCsv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btPause"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-86dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#ffffff"
+            android:text="CSV" />
+
+        <Button
             android:id="@+id/btlap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
